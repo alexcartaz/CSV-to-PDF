@@ -454,7 +454,7 @@ const generatePDFs = async function (
   {logo}, // all image files
 ) {
 
-  console.log('Beginning PDF generation...') // for end user to know what program is currently doing
+  console.log('\nBeginning PDF generation...') // for end user to know what program is currently doing
 
   console.log('\nInvoices')
   let currentPath = path.join(__dirname, 'Invoices')
