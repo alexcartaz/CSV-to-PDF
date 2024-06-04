@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+- let person = formattedPersonData
+- let time = formattedTimeData
+- let project = formattedProjectData
+html
+    head
+        style #{individualCSS}
+    body
+    .container
+        .h1 #{project.mainJobcode} > #{project.subJobcode}
+            .tH
+                .colFname First name
+                .colLname Last name
+                .colDate Date
+                .colHours Hours
+                .colClient Client
+                .colServiceItem Service Item
+            .tableSummary
+                .name #{person.fname} #{person.lname}
+                .totalHours Total Hours: #{person.totalHours}
+            each t in time
+                .mainRowContainer
+                    .colFname #{person.fname}
+                    .colLname #{person.lname}
+                    .colDate #{t.date}
+                    .colHours #{t.hours}
+                    .spacer
+                    .colClient #{project.mainJobcode} > #{project.subJobcode}
+                    .colServiceItem #{t.lowestJobcode}
+                .notes
+                    .bold NOTES: 
+                    .regular #{t.notes}

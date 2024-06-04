@@ -1,0 +1,11 @@
+{
+  "main": "dist/main.js",
+  "output": "main-sea-prep.blob",
+  "assets": {
+    "individual.css": "src/assets/styles/individual.css",
+    "client.css": "src/assets/styles/client.css",
+    "individual.pug": "src/assets/templates/individual.pug",
+    "client.pug": "src/assets/templates/client.pug",
+    "logo.png": "src/assets/images/logo.png"
+  }
+}

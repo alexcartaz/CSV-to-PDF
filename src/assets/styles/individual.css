@@ -1,0 +1,106 @@
+@page {
+  size: A4 portrait;
+  margin: 40px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  /*padding: 6%;*/
+}
+
+.h1 {
+  width: 100%;
+}
+
+.tH {
+  width: 100%;
+  display: flex;
+  height: 25px;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  border-top: 1px solid black;
+}
+
+.colFname {
+  width: 15%;
+  text-indent: 10px;
+}
+
+.colLname {
+  text-indent: 10px;
+  width: 15%;
+}
+
+.colDate {
+  width: 12.5%;
+  text-align: center;
+}
+
+.colHours {
+  width: 7.5%;
+  text-align: right;
+}
+
+.spacer {
+  width: 5%;
+}
+
+.colClient {
+  width: 20%;
+}
+
+.colServiceItem {
+  width: 25%;
+  padding-right: 5px;
+}
+
+th {
+  height: 30px;
+}
+
+.tableSummary {
+  width: 100%;
+  height: 30px;
+  background-color: #d9d9d9 !important;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 15px 0px 0px 0px;
+  display: flex;
+}
+
+.name {
+  width: 30%;
+  padding-left: 10px;
+}
+.totalHours {
+  text-align: right;
+  width: 18.5%;
+}
+
+.mainRowContainer {
+  width: 100%;
+  display: flex;
+  padding: 15px 0px 10px 0px;
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+.notes {
+  width: 100%;
+  padding-top: 5px;
+  background-color: #f0f0f0 !important;
+  padding-bottom: 5px;
+  display: flex;
+}
+
+.bold {
+  font-weight: bold;
+  padding-right: 5px;
+  padding-left: 10px;
+}
