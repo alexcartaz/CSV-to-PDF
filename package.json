@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "buildMain": "node scripts/buildMain.mjs",
+    "buildMain": "node scripts/build-main.mjs",
     "watchMain": "nodemon --exec \"npm run buildMain\" --watch src "
   },
   "dependencies": {

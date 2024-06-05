@@ -423,8 +423,10 @@ const generateMonthProjectPDF = async function(persons, clientHtml, logo){
   }
 
   // pdfs array contains PDF buffers for 1 client template and n individual templates
-  // but they are not merged into 1 PDF document yet
-  // copyPages so that they can be
+  // but they are not merged into 1 PDF document yet copyPages so that they can be
+  // this step is not sequentially and not serially using await Promise.all because
+  // (1) on the average computer it is not significantly faster and (2) this is an easy way
+  // to console.log the invoice generation in a logical order to the end user as it happens
   for (const pdf of pdfs) {
     const copiedPages = await mergedPdfDocument.copyPages(
       pdf,
@@ -433,7 +435,7 @@ const generateMonthProjectPDF = async function(persons, clientHtml, logo){
     // add pages to empty mergedPdfDocument so now all PDFs are in the same PDF buffer
     for (const page of copiedPages) mergedPdfDocument.addPage(page);
   }
-
+  
   const mergedPdfBytes = await mergedPdfDocument.save();
 
   return mergedPdfBytes;
@@ -448,7 +450,7 @@ const generateMonthProjectPDF = async function(persons, clientHtml, logo){
  * @param {object} param3 additional assets, eg images
  */
 const generatePDFs = async function (
-  {personnel, jobcodes, quickbooksData}, // all csv (processed) data
+  {personnel,/* jobcodes, */ quickbooksData}, // all csv (processed) data
   {individualCSS, clientCSS}, // all CSS files
   {individualPUG, clientPUG}, // all PUG files
   {logo}, // all image files
