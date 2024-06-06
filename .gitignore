@@ -1,9 +1,6 @@
 node_modules
-test-sea-prep.blob
-sample-sea-prep.blob
 main-sea-prep.blob
 *.exe
-*.pdf
 src/Invoices
 node_modules
 dist
