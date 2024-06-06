@@ -1,6 +1,6 @@
 # Author
 
-[<img src="">](https://scontent.cdninstagram.com/v/t51.2885-19/357872081_817347739779667_3872370304990824430_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=tq_Uw1rdVLcQ7kNvgG_mJHR&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYDgPq2XizwU9XgmZuiKFyPHvoRuKOmH_3_ct8GTxDnvfQ&oe=6666D88F&_nc_sid=10d13b)
+[<img src="1517731549054.jpg">](https://media.licdn.com/dms/image/C4E03AQFUOBejpbuPEg/profile-displayphoto-shrink_800_800/0/1517731549054?e=1723075200&v=beta&t=M_kwKMGFAxWx2PusoX10xEWK_7O8SzFSo99O4qBr6U0)
 Alex Carter:
 
 - <a href="https://www.linkedin.com/in/alexandertcarter/" target="_blank">LinkedIn</a>
