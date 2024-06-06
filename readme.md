@@ -35,9 +35,9 @@ So I decided to use Node.js's new Standalone Executeable Application (SEA) funct
 
 The requirements for this project included:
 * Convert a .csv Quickbooks itemized time report into multiple invoices for many projects under multiple clients, spanning multiple months
-* Create a cover sheet top-level invoice for each project under the client per month, with subsequent invoices of itemized time for each billable person in that person
-* Create these invoices per mockup examples and spec
-* Calculate total cost by factoring in personal rates, contractor multipliers, and aggregate monthly expenses
+* Create a cover sheet top-level invoice for each project under the client per month, with subsequent invoices of itemized time for each billable person in that project
+* Create these invoices per procided mockup examples and spec
+* Calculate total cost by factoring in personal rates, contractor multipliers, and aggregated monthly expenses
 * List personnel in a specified order of seniority on invoices, and include titles and the ability to overwrite fname and lname in the Quickbooks report
 * Allow for the end user to also overwrite project detailed jobcodes for select apperance on the invoices (usually abbreviated more human readable jobcodes)
 * Provide some visible version control
