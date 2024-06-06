@@ -1,31 +1,51 @@
 # Author
 
-[<img src="1517731549054.jpg">](https://media.licdn.com/dms/image/C4E03AQFUOBejpbuPEg/profile-displayphoto-shrink_800_800/0/1517731549054?e=1723075200&v=beta&t=M_kwKMGFAxWx2PusoX10xEWK_7O8SzFSo99O4qBr6U0)
-Alex Carter:
+<table >
+  <tr>
+    <td> 
+      <img src="https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/7bf38ef4-f861-4b59-a5a6-22a52a8ff1ea" width="100%" />
+    </td>
+    <td width="200px" >
+      <p>Alex Carter:</p>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/alexandertcarter/" target="_blank">LinkedIn</a>
+        </li>
+        <li>
+          <a href="https://medium.com/@AlexCartaz" target="_blank">Medium</a>
+        </li>
+        <li>
+          <a href="https://github.com/alexcartaz" target="_blank">Github</a>
+        </li>
+         <li>
+          <a href="https://www.threads.net/@alexcartaz" target="_blank">Threads</a>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-- <a href="https://www.linkedin.com/in/alexandertcarter/" target="_blank">LinkedIn</a>
-- <a href="https://medium.com/@AlexCartaz" target="_blank">Medium</a>
-- <a href="https://github.com/alexcartaz" target="_blank">Github</a>
+# Overview
 
-# React-App-REST-API
+I was contracted by a small consulting company to help them generate invoices from Quickbook reports saved as .CSV files. This company did not have their own T&E system but was spending 20-40 hours a month manually generating and editing these invoices.
 
-This app simulates a multipurpose course portal, where anyone can view the course catalog and a logged in user can create courses, as well as update and delete the courses they created. It is the Unit 10 final project for the online Full Stack JavaScript Techdegree program offered by <a href="https://teamtreehouse.com/techdegree/full-stack-javascript" target="_blank">Team Treehouse</a>.
+Architecting a web app was overkill as there was just 1 client with 1 end user who already had access to all the input files they needed on their local machine.
 
-This repo contains two separate applications: a simulated backend comprised of SQLite and a REST API that can be launched by navigating to the /api folder and running:
+So I decided to use Node.js's new Standalone Executeable Application (SEA) functionality to package a self a contained Node application as an .exe I could send to the client and they could run on their machine. No internet connection, user authentication, or other hassels needed. I was able to use modules like Pupeteer and PUG to rely on HTML + CSS to style and generate the PDFs just like a webapp, with some restrictions.
 
-```bash
-  npm install
-  npm start
-```
+The requirements for this project included:
+* Convert a .csv Quickbooks itemized time report into multiple invoices for many projects under multiple clients, spanning multiple months
+* Create a cover sheet top-level invoice for each project under the client per month, with subsequent invoices of itemized time for each billable person in that person
+* Create these invoices per mockup examples and spec
+* Calculate total cost by factoring in personal rates, contractor multipliers, and aggregate monthly expenses
+* List personnel in a specified order of seniority on invoices, and include titles and the ability to overwrite fname and lname in the Quickbooks report
+* Allow for the end user to also overwrite project detailed jobcodes for select apperance on the invoices (usually abbreviated more human readable jobcodes)
+* Provide some visible version control
+* Provide some minimal error handling
 
-The frontend that can be launched by navigating to the /client folder and running:
+Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to mandated processes), creating 6+ months worth in < 5 minutes.
 
-```bash
-  npm install
-  npm start
-```
-
-The purpose of this app is to demonstrate many of the full stack JavaScript concepts learned throughout this online tech degree program.
+# Instructions
 
 ## Tech Stack
 
@@ -35,32 +55,9 @@ Frameworks: React (Router, Dom, Markdown)\
 Database: SQLite (ORM Sequelize)\
 Tools: nodemon, axios, js-cookie
 
-## Core Concepts
+## Sample Output
 
-Backend:
-
-- SQLite database setup
-- Defining data models + data validation
-- Creating a REST API: GET, POST, PUT, DELETE
-- Testing APIs with Postman
-- CORS support (this is a local hosted backend for a locally run client to simulate a real backend)
-- User authenticaion middleware + hashed passowrds + conditional API calls
-
-Frontend:
-
-- Basic HTML and CSS
-- Create React App
-- Form submissions
-- Props / local state
-- React Router / dynamic navigation
-- React Context API / global state
-- Higher-Order React Components
-- Header + dynamic component renders
-- User authentication
-- Using a REST API: GET, POST, PUT, DELETE
-- Error handling (validation, unauthorized, 404, undhandled)
-- Misc middleware
-- Async function calls
+a
 
 ## License
 
