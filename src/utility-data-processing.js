@@ -102,8 +102,6 @@ const determineQuickbooksJobcodeMapping = function (
    * @returns {Object}
    */
   const processRawCSVs = function (rawPersonnel, rawJobcodes, rawQuickbooksData) {
-  
-    console.log('\nReading + processing CSVs...')
     
     // Personnel:
     // Data from the personnel CSV contains information missing from the Quickbooks report,
