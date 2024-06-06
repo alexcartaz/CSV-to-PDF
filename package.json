@@ -1,7 +1,7 @@
 {
   "scripts": {
     "buildMain": "node scripts/build-main.mjs",
-    "watchMain": "nodemon --exec \"npm run buildMain\" --watch src "
+    "watchMain": "nodemon --exec \"npm run buildMain\" --watch src --watch main-sea-config.json --watch scripts/build-main.mjs"
   },
   "dependencies": {
     "csvtojson": "^2.0.10",

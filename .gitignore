@@ -6,3 +6,4 @@ main-sea-prep.blob
 *.pdf
 src/Invoices
 node_modules
+dist
