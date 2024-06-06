@@ -19,15 +19,11 @@ const {generatePDFs} = require('./utility-generate-pdfs.js');
  * - calls the generatePDF function and inputs the above information into it
  */
 const generatePDFsFromCSVs = async function () {
+  console.log('\nReading files...');
+
   const rawPersonnel = await csv().fromFile('personnel.csv');
   const rawJobcodes = await csv().fromFile('jobcodes.csv');
   const rawQuickbooksData = await csv().fromFile('quickbooks_data.csv');
-
-  const processedCSVData = processRawCSVs(
-    rawPersonnel,
-    rawJobcodes,
-    rawQuickbooksData,
-  );
 
   const individualCSS = fs.readFileSync(
     path.join('assets', 'styles', 'individual.css'),
@@ -46,6 +42,16 @@ const generatePDFsFromCSVs = async function () {
     'utf8',
   );
   const logo = fs.readFileSync(path.join('assets', 'images', 'logo.png'));
+
+  console.log('\nProcessing CSVs...');
+
+  const processedCSVData = processRawCSVs(
+    rawPersonnel,
+    rawJobcodes,
+    rawQuickbooksData,
+  );
+
+  console.log('\nGenerating PDFs...');
 
   await generatePDFs(
     processedCSVData, // All data used to populate PDFs (from CSVs)
