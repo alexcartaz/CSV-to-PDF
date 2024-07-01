@@ -17,9 +17,6 @@
         <li>
           <a href="https://github.com/alexcartaz" target="_blank">Github</a>
         </li>
-         <li>
-          <a href="https://www.threads.net/@alexcartaz" target="_blank">Threads</a>
-        </li>
       </ul>
     </td>
   </tr>
