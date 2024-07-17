@@ -4,4 +4,4 @@ main-sea-prep.blob
 src/Invoices
 src/localCSVBackup
 dist
-test
+test.js
