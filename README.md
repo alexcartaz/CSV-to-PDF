@@ -67,34 +67,42 @@ npm install
 
 ## Approach
 
+When main.js is run, one of the first things it does is look for `personnel.csv`, `jobcodes.csv`, and `quickbooks_data.csv`. These CSVs are meant to exist in the same folder the .exe does on the client's local machine. `personnel.csv` and `jobcodes.csv` contain client specific information the Quickbooks report is missing, but that is needed to complete some business requirements for invoice generation. With these files being local, the end user can add project codes, FTEs, contractors, and change any other information, such as billable rates, as needed. Then, whenever the end user needs to run a new report, they simply replace quickbooks_data.csv with whatever Quickbooks itemized time report they just downloaded, and then run the .exe, which will replace or add appropriate folders and pdfs in an invoice folder adjascent to the .exe.
+
+When main.js is run:
+
+First, the CSVs are loaded. 
+
+Second the CSV data is processed by calling `processRawCSVs()` from `utility-data-processing.js`; structuring all of it into one object so that it can be used to generate PDFs.
+
 The project relies on PUG, CSS, and image "Asset" files to style and create the PDF invoices; these files are bundled inside the .exe when it's compiled.
 - [CSVs](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src)
 - [PUG](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src/assets/templates)
 - [CSS](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src/assets/styles)
 - [Images](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src/assets/images)
 
-They then call `generatePDFsFromCSVs()` from `utility-data-processing.js` which takes the raw CSV data and structures it in a way that can then be used to generate the PDFs.
+Third, after the CSVs are processed, `generatePDFsFromCSVs()` is called from `utility-data-processing.js` which iterates over the structured data and invokes puppeteer to create the PDFs buffers in memory, and then save them locally.
 
-All the input data is then fed into the `generatePDFs()` from `utility-generate-pdfs.js` which iterates over all the data, makes some calculations, formats the data as needed, creates the PDFs in memory, and then saves the PDFs locally.
+## Testing Locally (Dev Env)
 
-## Testing Locally
-
-The `src/test.js` file tests changes to the core functionality of the program in `the utility-data-processing.js` and `utility-generate-pdfs.js` files. This is useful because otherwise, to see the impact of code changes in these files, you would need to createa a new SEA Blob, then generate a new .exe, then run that .exe in the same folder as the CSVs. The test.js file allows us to test functionality without first packaging the entire program into an .exe.
+Bundling the .exe takes a few seconds so when in development mode, it's much easier to test changes by running the code locally. To do this, from the project root in terminal, you can call:
 
 ```
 cd src
-node test.js
+node main.js local
 ```
+
+This will load the "Asset" files through fs rather than the Node SEA Asset bundler (which only works on .exe compile).
 
 ## Creating .exe
 
-Using the watchMain script, we rebuild the .exe whenever any changes are made to files in the `/src` folder, `scripts/main-build.mjs`, or `main-sea-config.json`, as well as when this watch script is first run.
+By running the `watchMain` script from the project root, we rebuild the .exe whenever any changes are made to files in the `/src` folder, `scripts/main-build.mjs`, or `main-sea-config.json`, as well as when this watch script is first run.
 
 ```
 npm run watchMain
 ```
 
-Currently, the created .exe will have a filename resembling: 'CSVtoPDF vX.XX' where the version number is manually indicated inside the `/scripts/build-main.mjs` file.
+Currently, the created .exe will have a filename resembling: 'CSVtoPDF vX.XX' where the version number is manually hardcoded inside the `/scripts/build-main.mjs` file, which is saved to the first line of the Readme.md file upon bundling (and later referenced by the program when installing chrome browsers).
 
 ## Running .exe
 
@@ -104,7 +112,7 @@ To test the .exe make sure it is in a folder with the following files:
 - `personnel.csv`
 - `jobcodes.csv`
 
-Then start the application. A console.log window should pop up providing messages about how far along the program is. If a person is in the Quickbooks report not listed in the personnel.csv, or if a jobcode is in the Quickbooks report that is not in the jobcodes.csv, specific error messages will be thrown so the user can update the files. All other error messages currently cause the program to crash and the console.log window to poof. Future scope includes making the error handling more robust.
+Then start the application. A console.log window should pop up providing messages about how far along the program is. If a person is in the Quickbooks report not listed in the personnel.csv, or if a jobcode is in the Quickbooks report that is not in the jobcodes.csv, specific error messages will be thrown so the user can update the files. All other error messages *should* be caught in a try catch block, and a waitForUserInput function should allow the end user to see the error message before the program closes.
 
 ## Sample Output
 
@@ -123,7 +131,8 @@ Client n
         |__ project n
 ```
 
-<insert screenshot of console.log>
+![screenshot of console.log'd folder structure](https://github.com/user-attachments/assets/cf7080a4-15ce-40b7-99de-e04d9aa9a9a9)
+
 
 You can view a [sample invoice](https://github.com/alexcartaz/CSV-to-PDF/blob/main/sample/D-22%20001%20Admin.pdf) in the `/sample` folder.
 
