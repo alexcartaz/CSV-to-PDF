@@ -1,4 +1,4 @@
-# CSVtoPDF v1.00
+# CSV-to-PDF v1.00
 
 # About
 
