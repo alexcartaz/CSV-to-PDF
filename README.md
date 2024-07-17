@@ -54,6 +54,7 @@ I abstracted my work, replacing all client-sensitive files with Game of Thrones 
   - Provide abbreviated detailed jobcodes to be used in certain places of invoices to make for better readability when normal Quickbooks jobcobe is too many characters
 - Provide some visible version control
 - Provide some minimal error handling
+- Windows compatibility (client was a Windows shop; Mac compability has not yet been tested/attempted)
 
 Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to legacy processes), capable of creating 12 months (hundreds) of invoices in < 5 minutes.
 
