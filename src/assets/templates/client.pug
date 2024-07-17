@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+- let client = formattedClientData
+- let people = formattedPeopleData
+html
+    head
+        style #{clientCSS}
+    body
+    .container
+        .logo
+        .spacer
+        .header Lannister Advisory Services
+            br 
+            | 4216 Lion's Mane Ln
+            br 
+            | The North Keep, Casterly Rock
+            br 
+            | (555) 111-2222
+            br 
+            a(href='finance@genericconsulting.co') billing@las.com
+            br 
+            a(href='www.genericconsulting.co') www.las.com
+        .text1 INVOICE
+        .leftText BILL TO
+            br 
+            | #{client.subJobcode}
+        .midText INVOICE
+            br 
+            | DATE
+            br 
+            | TERMS
+            br 
+            | DUE DATE
+        .rightText 0000
+            br 
+            | #{client.lastDayOfMonth}
+            br 
+            | Net 30 
+            br 
+            | #{client.lastDayofMonthPlus30Days}
+        table(class='tableHeader')
+            tr
+                th(class="desc") DESCRIPTION
+                th(class="qty") QTY
+                th(class="rate") RATE
+                th(class="amt") AMOUNT
+        .text2 Charges
+        .text3 #{client.mainJobcode}
+            br 
+            | #{client.subJobcode}
+            br 
+            | #{client.monthYear}
+            br 
+            | Voucher #000000
+
+        table(class='tableIterate')
+            each person in people
+                tr 
+                    td(class='desc') #{person.name}, #{person.title}
+                    td(class='qty') #{person.totalHours}
+                    td(class='rate') #{person.rate}
+                    td(class='amt') #{person.totalAmount}
+            if client.expenses
+                tr
+                    td(class='desc') #{client.expensesDesc}
+                    td(class='qty') #{client.expensesQTY}
+                    td(class='rate') #{client.expensesRate}
+                    td(class='amt') #{client.expensesAmt}
+            if client.contractor
+                tr 
+                    td(class='desc') #{client.contractorDesc}
+                    td(class='qty') #{client.contractorQTY}
+                    td(class='rate') #{client.contractorRate}
+                    td(class='amt') #{client.contractorAmt}
+
+        .footer
+            .footerLeft This is an invoice for services rendered to the crown
+                br 
+                | on behalf of Lannister Advisery Services. Payment 
+                br 
+                | can be accepted in full, or on a payment schedule. 
+                br 
+                | Payment must be in gold or silver coin unless 
+                br 
+                | otherwise previously agreed upon. A Lannister always 
+                br 
+                | pays their debts and so should you.
+                br
+                |
+                br
+                | For the realm,
+                br 
+                | Tywin Lannister, Warden of the West
+            .footerMiddle BALANCE DUE
+            .footerRight $#{client.total}
