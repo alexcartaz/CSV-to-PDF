@@ -163,6 +163,15 @@ I started by following the [documentation instructions](https://nodejs.org/api/s
 
 However it turns out that vanilla Node SEA does not support the inclusion of non-Node modules, so I had to add a `main-build.mjs` script step using `esbuild` that bundled my entire project, with all modules and recursive dependencies, in `dist/main.js` and then have the SEA blob build from that.
 
+## Possible Future to Do
+
+- Make CLI more user friendly and use a library to parse args and pass in enviornment with environment variable
+- Improve scripts
+- Mac and cross platform compatibility
+- GUI
+- Restructure utility.js files so that functions are declared vs defined, so support functions can be pushed to bottom of the file and the core logical path (primary functionality) can be placed at the top of file
+- Create a separate repo removing the business requirement specific code and create more simple examples for just CSV to PDF functionality
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
