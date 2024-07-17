@@ -1,7 +1,6 @@
 node_modules
 main-sea-prep.blob
 *.exe
-*.pdf
 src/Invoices
 src/localCSVBackup
 dist
