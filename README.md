@@ -24,6 +24,7 @@
   </tr>
 </table>
 
+
 # Overview
 
 I was contracted by a small consulting company to generate invoices from a Quickbook report saved as a .CSV file. This company did not have their own T&E system but was spending 20-40 hours a month manually generating and editing these invoices.
@@ -33,6 +34,7 @@ Architecting a web app was overkill as there was just 1 end user who already had
 So I decided to use Node.js's new Standalone Executeable Application (SEA) functionality to package a self a contained Node application as an .exe. I could then send it to the client and they could run on their machine. No internet connection, user authentication, or other hassels needed. I was able to use modules like Puppeteer and PUG to rely on HTML + CSS + js to style and generate the PDFs just like a web app, with some restrictions for images.
 
 I abstracted my work, replacing all client-sensitive files with Game of Thrones themed data, so that I could showcase this work to prospective employers. One day I may create a simplified repo with all the business requirements code removed that is a more straightforward tutorial for only CSV to PDF conversion.
+
 
 ## Business Requirements:
 
@@ -55,6 +57,7 @@ I abstracted my work, replacing all client-sensitive files with Game of Thrones 
 
 Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to legacy processes), capable of creating 12 months (hundreds) of invoices in < 5 minutes.
 
+
 # Instructions
 
 ## Installation
@@ -64,6 +67,7 @@ git clone https://github.com/alexcartaz/CSV-to-PDF
 cd CSV-to-PDF
 npm install
 ```
+
 
 ## Approach
 
@@ -83,6 +87,7 @@ The project relies on PUG, CSS, and image "Asset" files to style and create the 
 
 Third, after the CSVs are processed, `generatePDFsFromCSVs()` is called from `utility-data-processing.js` which iterates over the structured data and invokes puppeteer to create the PDFs buffers in memory, and then save them locally.
 
+
 ## Testing Locally (Dev Env)
 
 Bundling the .exe takes a few seconds so when in development mode, it's much easier to test changes by running the code locally. To do this, from the project root in terminal, you can call:
@@ -94,6 +99,7 @@ node main.js local
 
 This will load the "Asset" files through fs rather than the Node SEA Asset bundler (which only works on .exe compile).
 
+
 ## Creating .exe
 
 By running the `watchMain` script from the project root, we rebuild the .exe whenever any changes are made to files in the `/src` folder, `scripts/main-build.mjs`, or `main-sea-config.json`, as well as when this watch script is first run.
@@ -104,6 +110,7 @@ npm run watchMain
 
 Currently, the created .exe will have a filename resembling: 'CSVtoPDF vX.XX' where the version number is manually hardcoded inside the `/scripts/build-main.mjs` file, which is saved to the first line of the Readme.md file upon bundling (and later referenced by the program when installing chrome browsers).
 
+
 ## Running .exe
 
 To test the .exe make sure it is in a folder with the following files:
@@ -113,6 +120,7 @@ To test the .exe make sure it is in a folder with the following files:
 - `jobcodes.csv`
 
 Then start the application. A console.log window should pop up providing messages about how far along the program is. If a person is in the Quickbooks report not listed in the personnel.csv, or if a jobcode is in the Quickbooks report that is not in the jobcodes.csv, specific error messages will be thrown so the user can update the files. All other error messages *should* be caught in a try catch block, and a waitForUserInput function should allow the end user to see the error message before the program closes.
+
 
 ## Sample Output
 
@@ -136,31 +144,16 @@ Client n
 
 You can view a [sample invoice](https://github.com/alexcartaz/CSV-to-PDF/blob/main/sample/D-19%20003%20Planning.pdf) in the `/sample` folder.
 
-Here is what it looks like, rendering a screenshot of each individual templated invoice that eventually get merged into a single project invoice for a given month:
+Here is what the invoice PDFs look like:
 
 Client Invoice
 
-> ![client](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/2970771d-01d9-4ec2-82cd-1479e8b6c6bd)
+> ![Screenshot 2024-07-17 150802](https://github.com/user-attachments/assets/14e53b2b-426e-4db1-9755-f505085e6ca8)
 
-John Smith Invoice
+Cerese Lannister Invoice
 
-> ![smith](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/f8ef1a2c-d47a-4185-9099-f714f9808106)
+> ![Screenshot 2024-07-17 150823](https://github.com/user-attachments/assets/256d2507-2b0d-44ed-b49f-37935d065b5a)
 
-Brandon Horne Invoice
-
-> ![horne](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/05504026-4b93-4e4d-b3a1-55a0376526fb)
-
-Kathyn Mayfly Invoice
-
-> ![mayfly](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/32d0e4a7-ac9b-4222-b5a3-3bf4cb82a3c3)
-
-Jonathon Taylor Thomas Invoice
-
-> ![jtt](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/b4733d14-f598-4bbf-9e5e-5101929f0f59)
-
-Xander Cartaz Invoice
-
-> ![xander](https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/0e3521fe-37e2-415d-9aed-c258fa72b2d3)
 
 ## Footnotes on Node.js SEA
 
