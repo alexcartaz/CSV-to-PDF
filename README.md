@@ -134,7 +134,7 @@ Client n
 ![screenshot of console.log'd folder structure](https://github.com/user-attachments/assets/cf7080a4-15ce-40b7-99de-e04d9aa9a9a9)
 
 
-You can view a [sample invoice](https://github.com/alexcartaz/CSV-to-PDF/blob/main/sample/D-22%20001%20Admin.pdf) in the `/sample` folder.
+You can view a [sample invoice](https://github.com/alexcartaz/CSV-to-PDF/blob/main/sample/D-19%20003%20Planning.pdf) in the `/sample` folder.
 
 Here is what it looks like, rendering a screenshot of each individual templated invoice that eventually get merged into a single project invoice for a given month:
 
