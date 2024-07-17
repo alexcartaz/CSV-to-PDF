@@ -45,7 +45,7 @@ function updateVersionNumberinReadme(version) {
     const lines = data.split('\n');
 
     // Modify the first line
-    lines[0] = '# CSVtoPDF v' + version;
+    lines[0] = '# CSV-to-PDF v' + version;
 
     // Join the lines back into a single string
     const updatedData = lines.join('\n');
