@@ -4,8 +4,8 @@
 
 <table >
   <tr>
-    <td> 
-      <img src="https://github.com/alexcartaz/CSV-to-PDF/assets/7451015/7bf38ef4-f861-4b59-a5a6-22a52a8ff1ea" width="100%" />
+    <td>
+      <img src="https://github.com/user-attachments/assets/4f8a3620-18e3-4f34-830c-50df4ecd52a7" width="100%" />
     </td>
     <td width="200px" >
       <p>Alex Carter:</p>
