@@ -26,32 +26,34 @@
 
 # Overview
 
-I was contracted by a small consulting company to generate invoices from a Quickbook report saved as .CSV files. This company did not have their own T&E system but was spending 20-40 hours a month manually generating and editing these invoices.
+I was contracted by a small consulting company to generate invoices from a Quickbook report saved as a .CSV file. This company did not have their own T&E system but was spending 20-40 hours a month manually generating and editing these invoices.
 
 Architecting a web app was overkill as there was just 1 end user who already had access to all the input files on their local machine.
 
-So I decided to use Node.js's new Standalone Executeable Application (SEA) functionality to package a self a contained Node application as an .exe. I could then send it to the client and they could run on their machine. No internet connection, user authentication, or other hassels needed. I was able to use modules like Pupeteer and PUG to rely on HTML + CSS + js to style and generate the PDFs just like a webapp, with some restrictions for images.
+So I decided to use Node.js's new Standalone Executeable Application (SEA) functionality to package a self a contained Node application as an .exe. I could then send it to the client and they could run on their machine. No internet connection, user authentication, or other hassels needed. I was able to use modules like Puppeteer and PUG to rely on HTML + CSS + js to style and generate the PDFs just like a web app, with some restrictions for images.
 
-## Requirements:
+I abstracted my work, replacing all client-sensitive files with Game of Thrones themed data, so that I could showcase this work to prospective employers. One day I may create a simplified repo with all the business requirements code removed that is a more straightforward tutorial for only CSV to PDF conversion.
+
+## Business Requirements:
 
 - Convert a .CSV Quickbooks itemized time report into invoices that could handle:
   - Multiple top-level clients (eg NASA, USDA, etc.)
-  - Multiple projects
+  - Multiple projects (eg Kennedy Space Center 2023, Space Station 2024, etc.) 
   - Multiple personnel (FTE, contractor)
   - Spanning multiple months (eg the Quickbook report could be for just 1 project in 1 month with 1 person or span 40 projects across 6 months with dozens of personnel)
 - Generate monthly invoices for each project, including (1) a top-level summary cover sheet of all costs followed by (2) individual itemized invoices for each billable person on that project
 - Create these invoices per provided mockup examples and spec
 - Calculate total cost by factoring in personal rates, contractor multipliers, and aggregated monthly expenses
-- Addition functionality beyond data provided in the Quickbooks report (see personnel.csv and jobcodes.csv); end user to:
-  - Provide order of seniority to order the display of personnel on invoices
+- Additional functionality beyond data provided in the Quickbooks report (see personnel.csv and jobcodes.csv); end user to:
+  - Provide order of seniority to order the display of personnel on invoices (eg 1. CEO, 2. Director of Policy, etc.)
   - Provide titles
   - Provide rates (static or changing over time; eg John billed at $100/hr in Jan but $120/hr in Mar after a promotion)
   - Provide display name of personnel (sometimes fname lname in Quickbook is not correct)
-  - Provide abbreviated detailed jobcodes to be used in certain places of invoices to make for better readability
+  - Provide abbreviated detailed jobcodes to be used in certain places of invoices to make for better readability when normal Quickbooks jobcobe is too many characters
 - Provide some visible version control
 - Provide some minimal error handling
 
-Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to mandated processes), capable of creating 12 months of invoices in < 5 minutes.
+Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to legacy processes), capable of creating 12 months (hundreds) of invoices in < 5 minutes.
 
 # Instructions
 
@@ -65,8 +67,7 @@ npm install
 
 ## Approach
 
-The main.js / test.js files ingest the input files, including:
-
+The project relies on PUG, CSS, and image "Asset" files to style and create the PDF invoices; these files are bundled inside the .exe when it's compiled.
 - [CSVs](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src)
 - [PUG](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src/assets/templates)
 - [CSS](https://github.com/alexcartaz/CSV-to-PDF/tree/main/src/assets/styles)
