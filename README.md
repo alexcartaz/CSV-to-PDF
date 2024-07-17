@@ -38,6 +38,7 @@ I abstracted my work, replacing all client-sensitive files with Game of Thrones 
 
 ## Business Requirements:
 
+- Windows compatibility (client was a Windows shop; <b>Mac compatibility has not yet been tested/attempted</b>) 
 - Convert a .CSV Quickbooks itemized time report into invoices that could handle:
   - Multiple top-level clients (eg NASA, USDA, etc.)
   - Multiple projects (eg Kennedy Space Center 2023, Space Station 2024, etc.) 
@@ -54,7 +55,6 @@ I abstracted my work, replacing all client-sensitive files with Game of Thrones 
   - Provide abbreviated detailed jobcodes to be used in certain places of invoices to make for better readability when normal Quickbooks jobcobe is too many characters
 - Provide some visible version control
 - Provide some minimal error handling
-- Windows compatibility (client was a Windows shop; <b>Mac compatibility has not yet been tested/attempted</b>) 
 
 
 Outcome: invoices are now generated 99% ready for submission (some voucher numbers must still be applied manually due to legacy processes), capable of creating 12 months (hundreds) of invoices in < 5 minutes.
